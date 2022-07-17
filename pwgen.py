@@ -32,20 +32,20 @@ debug = True
 #
 # TODO We just use the "ultimate password" for this first attempt – all bosses
 # beaten, all items collected, etc.
-password = 0b1111111111111111110000100111110011111111
+password = 0b11111111_11111111_11000010_01111100_11111111
 if mega_man_v and not debug:
     # Mega Man IV has 8 collectibles, and Mega Man V only has 7,
     # so MMV ignores the final collectible bit for password validity.
     # The game itself sets it to 0, however, so we do too - unless
     # we are in debug mode, because the website uses 1.
-    password ^= 0b0000000000000000100000000000000000000000
+    password ^= 0b00000000_00000000_10000000_00000000_00000000
 # TODO Sanity check the password. MMV is more lenient than MMIV.
 if debug:
     print('Step 1: ' + format(password, '040b'))
 
 # Step 2: XOR the password with this mask
 # ---------------------------------------
-password ^= 0b0101100101010100010110000010001100001000
+password ^= 0b01011001_01010100_01011000_00100011_00001000
 if debug:
     print('Step 2: ' + format(password, '040b'))
 
